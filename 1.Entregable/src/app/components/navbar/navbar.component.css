@@ -1,0 +1,9 @@
+.custom-navbar {
+    background-color: greenyellow;
+    height: calc(100vh - 50px);
+    padding: 10px;
+}
+
+li a {
+    text-decoration: none;
+}
