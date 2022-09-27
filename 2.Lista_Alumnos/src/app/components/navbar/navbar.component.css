@@ -1,0 +1,6 @@
+.custom-navbar {
+    background-color: whitesmoke;
+    height: calc(100vh - 50px);
+    padding: 10px;
+    border-right: 1px solid #ddd;
+}
