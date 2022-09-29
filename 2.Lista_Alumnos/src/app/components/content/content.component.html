@@ -1,11 +1,39 @@
-<div class="content-container">
+<div class="content-container col-md-3">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-header">Alumns</h4>
+            <h4 class="card-header">First Grade Alumns</h4>
             <ol>
-                <li *ngFor="let alumn of alumnList">
-                    {{ alumn.getFullname() }} - {{ alumn.getAge() }} - {{ alumn.getGrade() }}
-                </li>
+                <div *ngFor="let alumn of alumnList">
+                    <li *ngIf="alumn.getGrade() == 1" [ngClass]="alumn.getFinalGrade() < 60 ? 'reproved' : 'aproved'">
+                        {{ alumn.getFullname() }} - Age: {{ alumn.getAge() }}
+                    </li>
+                </div>
+            </ol>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-header">Second Grade Alumns</h4>
+            <ol>
+                <div *ngFor="let alumn of alumnList">
+                    <li *ngIf="alumn.getGrade() == 2" [ngClass]="alumn.getFinalGrade() < 60 ? 'reproved' : 'aproved'">
+                        {{ alumn.getFullname() }} - Age: {{ alumn.getAge() }}
+                    </li>
+                </div>
+            </ol>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-header">Third Grade Alumns</h4>
+            <ol>
+                <div *ngFor="let alumn of alumnList">
+                    <li *ngIf="alumn.getGrade() == 3" [ngClass]="alumn.getFinalGrade() < 60 ? 'reproved' : 'aproved'">
+                        {{ alumn.getFullname() }} - Age: {{ alumn.getAge() }}
+                    </li>
+                </div>
             </ol>
         </div>
     </div>

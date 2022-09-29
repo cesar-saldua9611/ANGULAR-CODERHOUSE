@@ -5,12 +5,14 @@ export class Alumn {
     private surname: string;
     private age: number;
     private grade: Grade;
+    private finalGrade: number;
 
-    constructor(name: string, surname: string, age: number, grade: Grade) {
+    constructor(name: string, surname: string, age: number, grade: Grade, finalGrade: number) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.grade = grade;
+        this.finalGrade = finalGrade;
     }
 
     getName() {
@@ -26,7 +28,11 @@ export class Alumn {
     }
 
     getGrade() {
-        return this.grade.toString();
+        return this.grade;
+    }
+
+    getFinalGrade() {
+        return this.finalGrade;
     }
 
     getFullname() {
