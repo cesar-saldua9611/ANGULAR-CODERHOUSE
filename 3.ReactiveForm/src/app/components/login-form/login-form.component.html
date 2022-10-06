@@ -1,0 +1,53 @@
+<div class="content-container col-md-3 mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-header">Sign Up</h4>
+
+            <form [formGroup]="loginForm" (ngSubmit)="addUser()">
+                <div class="form-group mt-2">
+                    <label class="form-label">Name</label>
+                    <input class="form-control" type="text" formControlName="name" />
+                    <p class="text-error" *ngIf="loginForm.get('name')?.touched && loginForm.get('name')?.errors?.['required']">Name is required</p>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label class="form-label">Surname</label>
+                    <input class="form-control" type="text" formControlName="surname" />
+                    <p class="text-error" *ngIf="loginForm.get('surname')?.touched && loginForm.get('surname')?.errors?.['required']">Surname is required</p>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" type="text" formControlName="email" />
+                    <p class="text-error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email']">Email not valid</p>
+                    <p class="text-error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']">Email is required</p>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label class="form-label">Password</label>
+                    <input class="form-control" type="password" formControlName="password" />
+                    <p class="text-error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['pattern']">Password needs to have at least 1 capital letter and 1 special character</p>
+                    <p class="text-error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['minLength']">Password needs to have at least 8 characters</p>
+                    <p class="text-error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']">Password is required</p>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label class="form-label">Confirm Password</label>
+                    <input class="form-control" type="password" formControlName="confirmPassword" (change)="validateConfirmPassword()" />
+                    <p class="text-error" *ngIf="loginForm.get('confirmPassword')?.touched && loginForm.get('confirmPassword')?.errors?.['pattern']">Password needs to have at least 1 capital letter and 1 special character</p>
+                    <p class="text-error" *ngIf="loginForm.get('confirmPassword')?.touched && loginForm.get('confirmPassword')?.errors?.['minLength']">Password needs to have at least 8 characters</p>
+                    <p class="text-error" *ngIf="loginForm.get('confirmPassword')?.touched && loginForm.get('confirmPassword')?.errors?.['required']">Password is required</p>
+                    <p class="text-error" *ngIf="loginForm.get('confirmPassword')?.touched && !isPasswordConfirmed">Passwords are not the same</p>
+                </div>
+
+                <button class="btn btn-primary mt-4" type="submit">Sign Up</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="isSignUp" class="content-container col-md-3 mt-5">
+    {{ loginForm.value.name }} {{ loginForm.value.surname }} has been sign up successfully!
+</div>

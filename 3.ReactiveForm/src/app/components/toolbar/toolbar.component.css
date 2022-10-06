@@ -1,0 +1,13 @@
+.custom-toolbar {
+    background-color: #843cbe;
+    height: 50px;
+    color: #ddd;
+}
+
+.login-button {
+    color: #ddd;
+    display: inline-block;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    padding: 5px 10px 5px 10px;
+}
