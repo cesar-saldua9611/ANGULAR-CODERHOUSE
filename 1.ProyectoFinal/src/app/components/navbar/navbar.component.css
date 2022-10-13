@@ -1,0 +1,22 @@
+.custom-navbar {
+    background-color: whitesmoke;
+    height: calc(100vh - 50px);
+    padding: 10px;
+    border-right: 1px solid #ddd;
+}
+
+.aproved-legend {
+    background-color: rgb(122, 194, 14);
+    color: rgb(122, 194, 14);
+    width: 20px; 
+    height: 20px; 
+    display: inline-block;
+}
+
+.reproved-legend {
+    background-color: rgb(250, 102, 102); 
+    color: rgb(250, 102, 102);
+    width: 20px; 
+    height: 20px; 
+    display: inline-block;
+}

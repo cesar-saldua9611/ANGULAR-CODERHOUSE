@@ -1,0 +1,40 @@
+<div class="content-container col-md-3 mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-header">New Student</h4>
+
+            <form [formGroup]="studentForm" (ngSubmit)="submitForm()">
+                
+                <div class="form-group mt-2">
+                    <label class="form-label">Name</label>
+                    <input class="form-control" type="text" formControlName="name" />
+                    <p class="text-error" *ngIf="studentForm.get('name')?.touched && studentForm.get('name')?.errors?.['required']">Name is required</p>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label class="form-label">Surname</label>
+                    <input class="form-control" type="text" formControlName="surname" />
+                    <p class="text-error" *ngIf="studentForm.get('surname')?.touched && studentForm.get('surname')?.errors?.['required']">Surname is required</p>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label class="form-label">Age</label>
+                    <input class="form-control" type="text" formControlName="age" />
+                    <p class="text-error" *ngIf="studentForm.get('age')?.touched && 
+                        (studentForm.get('age')?.errors?.['min'] || studentForm.get('age')?.errors?.['max'] || studentForm.get('age')?.errors?.['pattern'])"
+                        >Age not valid. It must be between 10 and 100</p>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" type="text" formControlName="email" />
+                    <p class="text-error" *ngIf="studentForm.get('email')?.touched && studentForm.get('email')?.errors?.['email']">Email not valid</p>
+                    <p class="text-error" *ngIf="studentForm.get('email')?.touched && studentForm.get('email')?.errors?.['required']">Email is required</p>
+                </div>
+
+                <button class="btn btn-primary mt-4" type="submit" [disabled]="!studentForm.valid">Add</button>
+            </form>
+
+        </div>
+    </div>
+</div>

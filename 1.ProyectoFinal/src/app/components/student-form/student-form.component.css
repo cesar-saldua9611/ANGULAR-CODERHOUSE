@@ -1,0 +1,14 @@
+.btn-primary {
+    background-color: #843cbe;
+    border: 1px solid #55227e;
+}
+
+.btn-primary:hover {
+    background-color: #55227e;
+    border: 1px solid #843cbe;
+}
+
+.text-error {
+    color: rgb(250, 102, 102);
+    font-size: small;
+}
