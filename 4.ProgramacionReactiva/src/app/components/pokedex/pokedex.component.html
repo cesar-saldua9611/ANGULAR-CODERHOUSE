@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-md-4">
+        <h3>All Pokemon (Pipe Async)</h3>
+        <pre>{{ allPokemon$ | async | json }}</pre>
+    </div>
+
+    <div class="col-md-4">
+        <h3>Poison Type Pokemon (Observable Subscription)</h3>
+        <pre>{{ poisonPokemon | json }}</pre>
+    </div>
+
+    <div class="col-md-4">
+        <h3>Normal Type Pokemon (Promise)</h3>
+        <pre>{{ normalPokemon | json }}</pre>
+    </div>
+</div>
