@@ -23,6 +23,8 @@ export class StudentService {
   }
 
   addStudent(student: Student) {
+    student.id = Math.round(Math.random() * 1000);
+    console.log(student.id)
     this.students.push(student);
     this.studentsSubject.next(this.students);
   }

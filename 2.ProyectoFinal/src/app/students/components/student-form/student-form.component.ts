@@ -25,11 +25,11 @@ export class StudentFormComponent implements OnInit, OnDestroy {
   ) {
     this.activatedRouteSubscription = this.activatedRoute.paramMap.subscribe((params) => {
       this.id = parseInt(params.get('id') || '0');
-      if(this.id > 0) {
+      if (this.id > 0) {
         this.isEdit = true;
 
         this.studentServiceSubscription = studentService.getStudentById(this.id).subscribe((students) => {
-          if(students.length > 0) {
+          if (students.length > 0) {
             this.studentForm = formBuilder.group({
               name: new FormControl(students[0].name, [Validators.required]),
               surname: new FormControl(students[0].surname, [Validators.required]),
@@ -49,10 +49,10 @@ export class StudentFormComponent implements OnInit, OnDestroy {
       }
     });
   }
-  
+
   ngOnInit(): void {
   }
-  
+
   ngOnDestroy(): void {
     this.activatedRouteSubscription?.unsubscribe();
     this.studentServiceSubscription?.unsubscribe();
@@ -66,8 +66,14 @@ export class StudentFormComponent implements OnInit, OnDestroy {
       age: this.studentForm.value.age,
       email: this.studentForm.value.email
     };
-    this.studentService.addStudent(student);
-    this.studentForm.reset();
+
+    if (this.isEdit) {
+      this.studentService.editStudent(student);
+    }
+    else {
+      this.studentService.addStudent(student);
+      this.studentForm.reset();
+    }
     this.router.navigate(['students/list']);
   }
 }
