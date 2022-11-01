@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Student } from 'src/app/models/student';
-import { StudentService } from 'src/app/services/student.service';
+import { StudentService } from 'src/app/students/services/student.service';
 
 @Component({
   selector: 'app-student-list',

@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { StundentsData } from '../data/students';
-import { Student } from '../models/student';
+import { StundentsData } from '../../data/students';
+import { Student } from '../../models/student';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class StudentService {
   students: Student[] = StundentsData.students;
   studentsSubject: BehaviorSubject<Student[]>;
