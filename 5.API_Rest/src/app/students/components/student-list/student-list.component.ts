@@ -11,9 +11,10 @@ import { StudentService } from 'src/app/students/services/student.service';
   styleUrls: ['./student-list.component.css']
 })
 export class StudentListComponent implements OnInit, OnDestroy {
-  studentServiceSubscription: Subscription;
+  studentServiceGetSubscription!: Subscription;
+  studentServiceDeleteSubscription!: Subscription;
   tableColumns: Array<string> = ['fullName', 'name', 'surname', 'age', 'email', 'actions'];
-  dataSource!: MatTableDataSource<Student>;
+  dataSource: MatTableDataSource<Student> = new MatTableDataSource<Student>();
 
   @ViewChild('listFilter') listFilter: any;
 
@@ -21,7 +22,20 @@ export class StudentListComponent implements OnInit, OnDestroy {
     private studentService: StudentService,
     private router: Router
   ) {
-    this.studentServiceSubscription = studentService.getStudents().subscribe((observer: Student[]) => {
+    
+  }
+
+  ngOnInit(): void {
+    this.refreshTable();
+  }
+
+  ngOnDestroy(): void {
+    this.studentServiceGetSubscription?.unsubscribe();
+    this.studentServiceDeleteSubscription?.unsubscribe();
+  }
+
+  refreshTable() {
+    this.studentServiceGetSubscription = this.studentService.getStudents().subscribe((observer: Student[]) => {
       this.dataSource = new MatTableDataSource<Student>(observer)
 
       if(this.listFilter != undefined && this.listFilter.nativeElement.value != '') {
@@ -29,13 +43,6 @@ export class StudentListComponent implements OnInit, OnDestroy {
         this.dataSource.filter = searchValue.trim();
       }
     });
-  }
-
-  ngOnInit(): void {
-  }
-
-  ngOnDestroy(): void {
-    this.studentServiceSubscription.unsubscribe();
   }
 
   filterTable($event: Event) {
@@ -48,6 +55,8 @@ export class StudentListComponent implements OnInit, OnDestroy {
   }
 
   deleteStudent(id: number) {
-    this.studentService.deleteStudent(id);
+    this.studentServiceDeleteSubscription = this.studentService.deleteStudent(id).subscribe((observer: Student) => {
+      this.refreshTable();
+    });
   }
 }
