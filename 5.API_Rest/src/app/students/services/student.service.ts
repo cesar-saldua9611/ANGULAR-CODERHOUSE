@@ -2,12 +2,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { StundentsData } from '../../core/data/students';
+import { StudentsData } from '../../core/data/students';
 import { Student } from '../../core/models/student';
 
 @Injectable()
 export class StudentService {
-  students: Student[] = StundentsData.students;
+  students: Student[] = StudentsData.students;
   studentsSubject: BehaviorSubject<Student[]>;
 
   constructor(

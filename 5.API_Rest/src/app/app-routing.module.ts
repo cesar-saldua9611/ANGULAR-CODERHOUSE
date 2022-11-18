@@ -7,6 +7,8 @@ import { AuthenticationGuard } from './core/guards/authentication.guard';
 const routes: Routes = [
   { path: 'index', component: IndexComponent, canActivate: [AuthenticationGuard] },
   { path: 'students', loadChildren: () => import('./students/students.module').then(m => m.StudentsModule), canLoad: [AuthenticationGuard] },
+  { path: 'inscriptions', loadChildren: () => import('./inscriptions/inscriptions.module').then(m => m.InscriptionsModule), canLoad: [AuthenticationGuard] },
+  { path: 'courses', loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule), canLoad: [AuthenticationGuard] },
   { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then((m) => m.AuthenticationModule) },
   { path: '', redirectTo: 'index', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },

@@ -3,10 +3,15 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConcatStringPipe } from '../core/pipes/concat-string.pipe';
+import { HeaderFontSizeDirective } from '../core/directives/header-font-size.directive';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ConcatStringPipe,
+    HeaderFontSizeDirective
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -16,7 +21,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     MaterialModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ConcatStringPipe,
+    HeaderFontSizeDirective
   ]
 })
 export class SharedModule { }

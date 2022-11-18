@@ -1,7 +1,7 @@
-import { Student } from "../models/student";
+import { Inscription } from "../models/inscription";
 
-export class StudentsData {
-    static students: Student[] = [
+export class InscriptionsData {
+    static inscriptions: Inscription[] = [
         {
             id: 1,
             name: 'Roberto',
