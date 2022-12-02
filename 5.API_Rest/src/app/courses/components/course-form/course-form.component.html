@@ -1,0 +1,26 @@
+<div class="content-container col-md-3 mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-header">{{ isEdit ? 'Edit Course' : 'New Course' }}</h4>
+
+            <form [formGroup]="courseForm" (ngSubmit)="submitForm()">
+                
+                <div class="form-group mt-2">
+                    <label class="form-label">Name</label>
+                    <input class="form-control" type="text" formControlName="name" />
+                    <p class="text-error" *ngIf="courseForm.get('name')?.touched && courseForm.get('name')?.errors?.['required']">Name is required</p>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label class="form-label">Teacher</label>
+                    <input class="form-control" type="text" formControlName="teacher" />
+                    <p class="text-error" *ngIf="courseForm.get('teacher')?.touched && courseForm.get('teacher')?.errors?.['required']">Teacher is required</p>
+                </div>
+
+
+                <button mat-raised-button color="primary" class="mt-4" type="submit" [disabled]="!courseForm.valid">{{ isEdit ? 'Save' : 'Add' }}</button>
+            </form>
+
+        </div>
+    </div>
+</div>

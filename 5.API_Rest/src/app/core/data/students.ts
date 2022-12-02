@@ -1,6 +1,6 @@
 import { Student } from "../models/student";
 
-export class StundentsData {
+export class StudentsData {
     static students: Student[] = [
         {
             id: 1,

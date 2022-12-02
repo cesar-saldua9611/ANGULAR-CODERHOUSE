@@ -23,29 +23,28 @@ export class StudentFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private router: Router
   ) {
+    this.studentForm = formBuilder.group({
+      name: new FormControl('', [Validators.required]),
+      surname: new FormControl('', [Validators.required]),
+      age: new FormControl('', [Validators.min(10), Validators.max(100), Validators.pattern('^\\d{1,}$')]),
+      email: new FormControl('', [Validators.email, Validators.required])
+    });
+    
     this.activatedRouteSubscription = this.activatedRoute.paramMap.subscribe((params) => {
       this.id = parseInt(params.get('id') || '0');
       if (this.id > 0) {
         this.isEdit = true;
 
-        this.studentServiceSubscription = studentService.getStudentById(this.id).subscribe((students) => {
-          if (students.length > 0) {
+        this.studentServiceSubscription = studentService.getStudentById(this.id).subscribe((student: Student) => {
+          if (student != null) {
             this.studentForm = formBuilder.group({
-              name: new FormControl(students[0].name, [Validators.required]),
-              surname: new FormControl(students[0].surname, [Validators.required]),
-              age: new FormControl(students[0].age, [Validators.min(10), Validators.max(100), Validators.pattern('^\\d{1,}$')]),
-              email: new FormControl(students[0].email, [Validators.email, Validators.required])
+              name: new FormControl(student.name, [Validators.required]),
+              surname: new FormControl(student.surname, [Validators.required]),
+              age: new FormControl(student.age, [Validators.min(10), Validators.max(100), Validators.pattern('^\\d{1,}$')]),
+              email: new FormControl(student.email, [Validators.email, Validators.required])
             });
           }
         })
-      }
-      else {
-        this.studentForm = formBuilder.group({
-          name: new FormControl('', [Validators.required]),
-          surname: new FormControl('', [Validators.required]),
-          age: new FormControl('', [Validators.min(10), Validators.max(100), Validators.pattern('^\\d{1,}$')]),
-          email: new FormControl('', [Validators.email, Validators.required])
-        });
       }
     });
   }

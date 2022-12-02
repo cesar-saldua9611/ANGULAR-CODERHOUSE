@@ -4,3 +4,8 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .fill { flex: 1 1 auto; }
+
+.text-error {
+    color: rgb(250, 102, 102);
+    font-size: small;
+}

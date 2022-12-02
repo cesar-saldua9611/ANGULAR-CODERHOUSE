@@ -1,0 +1,52 @@
+<div class="row mt-4">
+    <h5 appHeaderFontSize>Courses List</h5>
+</div>
+<div class="row">
+    <mat-form-field class="col-md-4">
+        <mat-label>Search</mat-label>
+        <input type="text" matInput (keyup)="filterTable($event)" #listFilter/>
+    </mat-form-field>
+    <div class="col-md-1 offset-7">
+        <button mat-raised-button color="primary" routerLink="/courses/add">Add</button>
+    </div>
+</div>
+
+<div class="row">
+    <table mat-table [dataSource]="dataSource" class="col-md-12">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let course">{{ course.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="teacher">
+            <th mat-header-cell *matHeaderCellDef>Teacher</th>
+            <td mat-cell *matCellDef="let course">{{ course.teacher }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef>Start Date</th>
+            <td mat-cell *matCellDef="let course">{{ course.startDate }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef>End Date</th>
+            <td mat-cell *matCellDef="let course">{{ course.endDate }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="isOpen">
+            <th mat-header-cell *matHeaderCellDef>Open</th>
+            <td mat-cell *matCellDef="let course">{{ course.isOpen }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let course">
+                <button mat-icon-button (click)="editCourse(course.id)"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button (click)="deleteCourse(course.id)"><mat-icon>delete</mat-icon></button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: tableColumns"></tr>
+    </table>
+</div>

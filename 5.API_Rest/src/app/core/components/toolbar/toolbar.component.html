@@ -1,7 +1,12 @@
-<mat-toolbar color="primary">
-    <button mat-button routerLink="index">
-        <h3 class="">My Page</h3>
-    </button>
-    <div class="fill"></div>
-    <a mat-button routerLink="authentication/login">Login</a>
-</mat-toolbar>
+<ng-container *ngIf="sesion$ | async as sesion">
+    <mat-toolbar color="primary">
+        <button mat-button routerLink="index">
+            <h3 class="">My Page</h3>
+        </button>
+        <div class="fill"></div>
+        <a mat-button *ngIf="!sesion.activeSesion" routerLink="authentication/login">Login</a>
+
+        <h3 *ngIf="sesion.activeSesion">Hello {{ sesion.activeUser?.username }}</h3>
+        <a mat-button *ngIf="sesion.activeSesion">Logout</a>
+    </mat-toolbar>
+</ng-container>
