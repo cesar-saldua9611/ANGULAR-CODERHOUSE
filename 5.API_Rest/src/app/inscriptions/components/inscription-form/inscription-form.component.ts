@@ -24,10 +24,8 @@ export class InscriptionFormComponent implements OnInit, OnDestroy {
     private router: Router
   ) {
     this.inscriptionForm = formBuilder.group({
-      name: new FormControl('', [Validators.required]),
-      surname: new FormControl('', [Validators.required]),
-      age: new FormControl('', [Validators.min(10), Validators.max(100), Validators.pattern('^\\d{1,}$')]),
-      email: new FormControl('', [Validators.email, Validators.required])
+      studentId: new FormControl('', [Validators.required]),
+      courseId: new FormControl('', [Validators.required])
     });
     
     this.activatedRouteSubscription = this.activatedRoute.paramMap.subscribe((params) => {
@@ -38,10 +36,8 @@ export class InscriptionFormComponent implements OnInit, OnDestroy {
         this.inscriptionServiceSubscription = inscriptionService.getInscriptionById(this.id).subscribe((inscription: Inscription) => {
           if (inscription != null) {
             this.inscriptionForm = formBuilder.group({
-              name: new FormControl(inscription.name, [Validators.required]),
-              surname: new FormControl(inscription.surname, [Validators.required]),
-              age: new FormControl(inscription.age, [Validators.min(10), Validators.max(100), Validators.pattern('^\\d{1,}$')]),
-              email: new FormControl(inscription.email, [Validators.email, Validators.required])
+              studentId: new FormControl(inscription.studentId, [Validators.required]),
+              courseId: new FormControl(inscription.courseId, [Validators.required])
             });
           }
         })
@@ -60,10 +56,8 @@ export class InscriptionFormComponent implements OnInit, OnDestroy {
   submitForm() {
     let inscription: Inscription = {
       id: this.id,
-      name: this.inscriptionForm.value.name,
-      surname: this.inscriptionForm.value.surname,
-      age: this.inscriptionForm.value.age,
-      email: this.inscriptionForm.value.email
+      studentId: this.inscriptionForm.value.studentId,
+      courseId: this.inscriptionForm.value.courseId
     };
 
     if (this.isEdit) {

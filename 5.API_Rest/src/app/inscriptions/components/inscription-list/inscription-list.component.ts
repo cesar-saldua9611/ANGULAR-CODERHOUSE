@@ -13,7 +13,7 @@ import { InscriptionService } from 'src/app/inscriptions/services/inscription.se
 export class InscriptionListComponent implements OnInit, OnDestroy {
   inscriptionServiceGetSubscription!: Subscription;
   inscriptionServiceDeleteSubscription!: Subscription;
-  tableColumns: Array<string> = ['fullName', 'name', 'surname', 'age', 'email', 'actions'];
+  tableColumns: Array<string> = ['student', 'course', 'actions'];
   dataSource: MatTableDataSource<Inscription> = new MatTableDataSource<Inscription>();
 
   @ViewChild('listFilter') listFilter: any;
