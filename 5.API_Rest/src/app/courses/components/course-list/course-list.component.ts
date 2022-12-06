@@ -37,11 +37,6 @@ export class CourseListComponent implements OnInit, OnDestroy {
   refreshTable() {
     this.courseServiceGetSubscription = this.courseService.getCourses().subscribe((observer: Course[]) => {
       this.dataSource = new MatTableDataSource<Course>(observer)
-
-      if(this.listFilter != undefined && this.listFilter.nativeElement.value != '') {
-        const searchValue = this.listFilter.nativeElement.value;
-        this.dataSource.filter = searchValue.trim();
-      }
     });
   }
 

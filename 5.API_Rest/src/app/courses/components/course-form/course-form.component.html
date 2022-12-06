@@ -17,6 +17,29 @@
                     <p class="text-error" *ngIf="courseForm.get('teacher')?.touched && courseForm.get('teacher')?.errors?.['required']">Teacher is required</p>
                 </div>
 
+                <div class="col-md-4  mt-2">
+                    <mat-form-field appearance="fill" class="fill">
+                        <mat-label>Start Date</mat-label>
+                        <input matInput [matDatepicker]="startDate" formControlName="startDate">
+                        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                        <mat-datepicker #startDate></mat-datepicker>
+                    </mat-form-field>
+                </div>
+        
+                <div class="col-md-4 mt-2">
+                    <mat-form-field appearance="fill" class="fill">
+                        <mat-label>End Date</mat-label>
+                        <input matInput [matDatepicker]="endDate" formControlName="endDate">
+                        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                        <mat-datepicker #endDate></mat-datepicker>
+                    </mat-form-field>
+                </div>
+        
+                <div class="col-md-4">
+                    <mat-slide-toggle formControlName="isOpen">Is Open?</mat-slide-toggle>
+                </div>
 
                 <button mat-raised-button color="primary" class="mt-4" type="submit" [disabled]="!courseForm.valid">{{ isEdit ? 'Save' : 'Add' }}</button>
             </form>

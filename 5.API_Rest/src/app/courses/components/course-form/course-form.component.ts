@@ -28,7 +28,7 @@ export class CourseFormComponent implements OnInit, OnDestroy {
       teacher: new FormControl('', [Validators.required]),
       startDate: new FormControl('', [Validators.required]),
       endDate: new FormControl('', [Validators.required]),
-      isOpen: new FormControl('', [Validators.required])
+      isOpen: new FormControl('')
     });
     
     this.activatedRouteSubscription = this.activatedRoute.paramMap.subscribe((params) => {

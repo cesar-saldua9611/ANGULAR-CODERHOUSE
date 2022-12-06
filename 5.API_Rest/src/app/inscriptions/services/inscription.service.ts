@@ -2,12 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { InscriptionsData } from '../../core/data/inscriptions';
 import { Inscription } from '../../core/models/inscription';
 
 @Injectable()
 export class InscriptionService {
-  inscriptions: Inscription[] = InscriptionsData.inscriptions;
+  inscriptions: Inscription[] = [];
   inscriptionsSubject: BehaviorSubject<Inscription[]>;
 
   constructor(

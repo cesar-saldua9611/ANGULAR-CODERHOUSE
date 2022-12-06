@@ -7,14 +7,14 @@
                 
                 <div class="form-group mt-2">
                     <label class="form-label">Student</label>
-                    <input class="form-control" type="text" formControlName="studentId" />
-                    <p class="text-error" *ngIf="inscriptionForm.get('studentId')?.touched && inscriptionForm.get('studentId')?.errors?.['required']">Student is required</p>
+                    <input class="form-control" type="text" formControlName="student" />
+                    <p class="text-error" *ngIf="inscriptionForm.get('student')?.touched && inscriptionForm.get('student')?.errors?.['required']">Student is required</p>
                 </div>
 
                 <div class="form-group mt-2">
                     <label class="form-label">Course</label>
-                    <input class="form-control" type="text" formControlName="courseId" />
-                    <p class="text-error" *ngIf="inscriptionForm.get('courseId')?.touched && inscriptionForm.get('courseId')?.errors?.['required']">Course is required</p>
+                    <input class="form-control" type="text" formControlName="course" />
+                    <p class="text-error" *ngIf="inscriptionForm.get('course')?.touched && inscriptionForm.get('course')?.errors?.['required']">Course is required</p>
                 </div>
 
                 <button mat-raised-button color="primary" class="mt-4" type="submit" [disabled]="!inscriptionForm.valid">{{ isEdit ? 'Save' : 'Add' }}</button>

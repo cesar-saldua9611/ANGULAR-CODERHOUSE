@@ -24,8 +24,8 @@ export class InscriptionFormComponent implements OnInit, OnDestroy {
     private router: Router
   ) {
     this.inscriptionForm = formBuilder.group({
-      studentId: new FormControl('', [Validators.required]),
-      courseId: new FormControl('', [Validators.required])
+      student: new FormControl('', [Validators.required]),
+      course: new FormControl('', [Validators.required])
     });
     
     this.activatedRouteSubscription = this.activatedRoute.paramMap.subscribe((params) => {
@@ -36,8 +36,8 @@ export class InscriptionFormComponent implements OnInit, OnDestroy {
         this.inscriptionServiceSubscription = inscriptionService.getInscriptionById(this.id).subscribe((inscription: Inscription) => {
           if (inscription != null) {
             this.inscriptionForm = formBuilder.group({
-              studentId: new FormControl(inscription.studentId, [Validators.required]),
-              courseId: new FormControl(inscription.courseId, [Validators.required])
+              studentId: new FormControl(inscription.student, [Validators.required]),
+              courseId: new FormControl(inscription.course, [Validators.required])
             });
           }
         })
@@ -56,8 +56,8 @@ export class InscriptionFormComponent implements OnInit, OnDestroy {
   submitForm() {
     let inscription: Inscription = {
       id: this.id,
-      studentId: this.inscriptionForm.value.studentId,
-      courseId: this.inscriptionForm.value.courseId
+      student: this.inscriptionForm.value.student,
+      course: this.inscriptionForm.value.course
     };
 
     if (this.isEdit) {

@@ -3,6 +3,6 @@ import { Student } from "./student"
 
 export interface Inscription {
     id: number,
-    student: Student;
-    course: Course;
+    student: string;
+    course: string;
 }
